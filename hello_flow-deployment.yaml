@@ -1,7 +1,7 @@
 ###
 ### A complete description of a Prefect Deployment for flow 'hello-flow'
 ###
-name: live
+name: live-gh-2
 description: null
 version: 9fed5b2382fc63a11aa0084980a1c82f
 # The work queue that will handle this deployment's runs
@@ -9,8 +9,7 @@ work_queue_name: live
 tags: []
 parameters: {}
 schedule: null
-infra_overrides:
-  image: wraphaelson/live
+infra_overrides: {}
 
 ###
 ### DO NOT EDIT BELOW THIS LINE
@@ -18,28 +17,25 @@ infra_overrides:
 flow_name: hello-flow
 manifest_path: null
 infrastructure:
-  type: docker-container
+  type: process
   env: {}
   labels: {}
-  name: prod
+  name: null
   command:
-  - python
-  - -m
-  - prefect.engine
-  image: wraphaelson/live
-  image_pull_policy: null
-  image_registry: null
-  networks: []
-  network_mode: null
-  auto_remove: true
-  volumes: []
+  - ls -al
   stream_output: true
-  _block_document_id: 0d1edda1-a6a5-4271-8809-aa4364443876
-  _block_document_name: prod
+  _block_document_id: 65be8f55-2803-4b6c-98d0-3a15dfd9492b
+  _block_document_name: live-testing
   _is_anonymous: false
-  _block_type_slug: docker-container
-storage: null
-path: /opt/prefect/flows
+  _block_type_slug: process
+storage:
+  repository: https://github.com/WillRaphaelson/prefect-live.git
+  reference: main
+  _block_document_id: e6acd6f3-b826-44d1-82e4-6aebb1f352fb
+  _block_document_name: live
+  _is_anonymous: false
+  _block_type_slug: github
+path: flows
 entrypoint: flows/flow.py:hello_flow
 parameter_openapi_schema:
   title: Parameters
